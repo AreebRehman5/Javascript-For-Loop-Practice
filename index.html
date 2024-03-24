@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pattern Generators</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Shape Generator</title>
 </head>
 <body>
 
@@ -13,62 +13,9 @@
     <input type="number" id="diamondRows" name="diamondRows" min="1" required><br><br>
     <button type="button" onclick="generateDiamond()">Generate Diamond</button>
 </form>
-<hr>
+
+<!-- This is where the generated diamond pattern will be displayed -->
 <pre id="diamondOutput"></pre>
-
-<h2>Rhombus Shape Generator</h2>
-<form id="rhombusForm">
-    <label for="rhombusRows">Enter the number of rows for the rhombus:</label><br>
-    <input type="number" id="rhombusRows" name="rhombusRows" min="1" required><br><br>
-    <button type="button" onclick="generateRhombus()">Generate Rhombus</button>
-</form>
-<hr>
-<pre id="rhombusOutput"></pre>
-
-<h2>Inverted Full Pyramid Generator</h2>
-<form id="pyramidForm">
-    <label for="pyramidRows">Enter the number of rows for the inverted full pyramid:</label><br>
-    <input type="number" id="pyramidRows" name="pyramidRows" min="1" required><br><br>
-    <button type="button" onclick="generatePyramid()">Generate Pyramid</button>
-</form>
-<hr>
-<pre id="pyramidOutput"></pre>
-
-<h2>Inverted Left Half Pyramid Generator</h2>
-<form id="leftPyramidForm">
-    <label for="leftPyramidRows">Enter the number of rows for the inverted left half pyramid:</label><br>
-    <input type="number" id="leftPyramidRows" name="leftPyramidRows" min="1" required><br><br>
-    <button type="button" onclick="generateLeftPyramid()">Generate Pyramid</button>
-</form>
-<hr>
-<pre id="leftPyramidOutput"></pre>
-
-<h2>Hourglass Pattern Generator</h2>
-<form id="hourglassForm">
-    <label for="hourglassRows">Enter the number of rows for the hourglass:</label><br>
-    <input type="number" id="hourglassRows" name="hourglassRows" min="1" required><br><br>
-    <button type="button" onclick="generateHourglass()">Generate Hourglass</button>
-</form>
-<hr>
-<pre id="hourglassOutput"></pre>
-
-<h2>Hollow Square Pattern Generator</h2>
-<form id="squareForm">
-    <label for="squareRows">Enter the number of rows/columns for the square:</label><br>
-    <input type="number" id="squareRows" name="squareRows" min="1" required><br><br>
-    <button type="button" onclick="generateSquare()">Generate Square</button>
-</form>
-<hr>
-<pre id="squareOutput"></pre>
-
-<h2>Hollow Diamond Pattern Generator</h2>
-<form id="hollowDiamondForm">
-    <label for="hollowDiamondRows">Enter the number of rows for the hollow diamond:</label><br>
-    <input type="number" id="hollowDiamondRows" name="hollowDiamondRows" min="1" required><br><br>
-    <button type="button" onclick="generateHollowDiamond()">Generate Hollow Diamond</button>
-</form>
-<hr>
-<pre id="hollowDiamondOutput"></pre>
 
 <script>
     function generateDiamond() {
@@ -77,11 +24,11 @@
 
         // Upper half of the diamond
         for (var i = 1; i <= rows; i++) {
-            // Add spaces before the stars in each row
+            // Add spaces before the characters in each row
             for (var j = 1; j <= rows - i; j++) {
                 diamondOutput += " ";
             }
-            // Add stars in each row
+            // Add characters in each row
             for (var k = 1; k <= 2 * i - 1; k++) {
                 diamondOutput += "*";
             }
@@ -91,188 +38,21 @@
 
         // Lower half of the diamond
         for (var i = rows - 1; i >= 1; i--) {
-            // Add spaces before the stars in each row
+            // Add spaces before the characters in each row
             for (var j = 1; j <= rows - i; j++) {
                 diamondOutput += " ";
             }
-            // Add stars in each row
+            // Add characters in each row
             for (var k = 1; k <= 2 * i - 1; k++) {
-                diamondOutput += "*";
+                diamondOutput += "$";
             }
             // Move to the next line after each row
             diamondOutput += "\n";
         }
 
+        // Display the generated diamond pattern
         document.getElementById("diamondOutput").textContent = diamondOutput;
-    }
-
-    function generateRhombus() {
-        var rows = parseInt(document.getElementById("rhombusRows").value);
-        var rhombusOutput = "";
-
-        // Upper half of the rhombus
-        for (var i = 1; i <= rows; i++) {
-            // Spaces before the stars in each row
-            for (var j = 1; j <= rows - i; j++) {
-                rhombusOutput += " ";
-            }
-
-            // Stars in each row
-            for (var k = 1; k <= rows; k++) {
-                rhombusOutput += "*";
-            }
-
-            // Move to the next line after each row
-            rhombusOutput += "\n";
-        }
-
-        document.getElementById("rhombusOutput").textContent = rhombusOutput;
-    }
-
-    function generatePyramid() {
-        var rows = parseInt(document.getElementById("pyramidRows").value);
-        var pyramidOutput = "";
-
-        // Iterate for each row
-        for (var i = rows; i >= 1; i--) {
-            // Add leading spaces
-            for (var j = 0; j < rows - i; j++) {
-                pyramidOutput += " ";
-            }
-            // Add stars
-            for (var k = 0; k < 2 * i - 1; k++) {
-                pyramidOutput += "*";
-            }
-            // Move to the next line
-            pyramidOutput += "\n";
-        }
-
-        document.getElementById("pyramidOutput").textContent = pyramidOutput;
-    }
-
-    function generateLeftPyramid() {
-        var rows = parseInt(document.getElementById("leftPyramidRows").value);
-        var pyramidOutput = "";
-
-        // Iterate for each row
-       
-        for (var i = rows; i >= 1; i--) {
-    // Add stars for each row
-    for (var j = 1; j <= i; j++) {
-        pyramidOutput += "*";
-    }
-    // Move to the next line
-    pyramidOutput += "\n";
-}
-
-document.getElementById("leftPyramidOutput").textContent = pyramidOutput;
-}
-
-function generateHourglass() {
-var rows = parseInt(document.getElementById("hourglassRows").value);
-var hourglassOutput = "";
-
-// Upper half of the hourglass
-for (var i = rows; i >= 1; i--) {
-    // Add spaces before the stars in each row
-    for (var j = 0; j < rows - i; j++) {
-        hourglassOutput += " ";
-    }
-    // Add stars in each row
-    for (var k = 1; k <= 2 * i - 1; k++) {
-        hourglassOutput += "*";
-    }
-    // Move to the next line after each row
-    hourglassOutput += "\n";
-}
-
-// Lower half of the hourglass
-for (var i = 2; i <= rows; i++) {
-    // Add spaces before the stars in each row
-    for (var j = 0; j < rows - i; j++) {
-        hourglassOutput += " ";
-    }
-    // Add stars in each row
-    for (var k = 1; k <= 2 * i - 1; k++) {
-        hourglassOutput += "*";
-    }
-    // Move to the next line after each row
-    hourglassOutput += "\n";
-}
-
-document.getElementById("hourglassOutput").textContent = hourglassOutput;
-}
-
-function generateSquare() {
-var rows = parseInt(document.getElementById("squareRows").value);
-var squareOutput = "";
-
-// Iterate for each row
-for (var i = 1; i <= rows; i++) {
-    // If it's the first or last row, print stars for the entire row
-    if (i === 1 || i === rows) {
-        for (var j = 1; j <= rows; j++) {
-            squareOutput += "*";
-        }
-    } else {
-        // If it's not the first or last row, print stars only for the first and last columns
-        for (var j = 1; j <= rows; j++) {
-            if (j === 1 || j === rows) {
-                squareOutput += "*";
-            } else {
-                squareOutput += " ";
-            }
-        }
-    }
-    // Move to the next line after each row
-    squareOutput += "\n";
-}
-
-document.getElementById("squareOutput").textContent = squareOutput;
-}
-
-function generateHollowDiamond() {
-var rows = parseInt(document.getElementById("hollowDiamondRows").value);
-var diamondOutput = "";
-
-// Upper half of the diamond
-for (var i = 1; i <= rows; i++) {
-    // Add spaces before the stars in each row
-    for (var j = 1; j <= rows - i; j++) {
-        diamondOutput += " ";
-    }
-    // Add stars in each row
-    for (var k = 1; k <= 2 * i - 1; k++) {
-        if (k == 1 || k == 2 * i - 1) {
-            diamondOutput += "*";
-        } else {
-            diamondOutput += " ";
-        }
-    }
-    // Move to the next line after each row
-    diamondOutput += "\n";
-}
-
-// Lower half of the diamond
-for (var i = rows - 1; i >= 1; i--) {
-    // Add spaces before the stars in each row
-    for (var j = 1; j <= rows - i; j++) {
-        diamondOutput += " ";
-    }
-    // Add stars in each row
-    for (var k = 1; k <= 2 * i - 1; k++) {
-        if (k == 1 || k == 2 * i - 1) {
-            diamondOutput += "*";
-        } else {
-            diamondOutput += " ";
-        }
-    }
-    // Move to the next line after each row
-    diamondOutput += "\n";
-}
-
-document.getElementById("hollowDiamondOutput").textContent = diamondOutput;
-}
+    }  
 </script>
 
 </body>
